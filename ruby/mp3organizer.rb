@@ -85,12 +85,12 @@ dir.each do |file|
         new_file_name = %{#{"%02d" % info.tracknum} - #{info.title.force_encoding('UTF-8')}.#{file_extension}}
         if path_cache.has_key? info.album
           # if the directory exists, we simply move the file (with renaming)
-          FileUtils.mv absolute_file_path, (path_cache[info.album] + p + new_file_name), :verbose => true, :noop => true
+          FileUtils.mv absolute_file_path, (path_cache[info.album] + p + new_file_name)
         else
           # if not, we create the directory structure and move/rename the file
           new_path = dir.path + info.artist.force_encoding('UTF-8').to_s + p + info.album.force_encoding('UTF-8').to_s
           FileUtils.mkdir_p new_path, :verbose => true
-          FileUtils.mv absolute_file_path, (new_path + p + new_file_name ), :verbose => true, :noop => true
+          FileUtils.mv absolute_file_path, (new_path + p + new_file_name )
           # we crite the path into the hash table
           path_cache[info.album] = new_path
         end
