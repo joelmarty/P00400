@@ -1,3 +1,14 @@
+-- P00400 coursework: haskell program
+-- Syracuse sequence
+--
+-- Syracuse sequences are sequences which for any n will converge to 1.
+-- This program provides an implementation of a Syracuse sequence:
+-- for any n where n is:
+--      - 1 : the sequence ends (stop condition)
+--      - odd : the following number will be n/2
+--      - even : the following number will be 3*n+1
+--
+-- Usage: just launch the program on CLI and follow instructions
 
 main = do   print "Enter a positive number"
             number <- getLine
