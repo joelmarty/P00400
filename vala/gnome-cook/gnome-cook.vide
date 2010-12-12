@@ -1,0 +1,36 @@
+--- !Project
+path: /home/joel/Documents/OBU/cours/P00400/cwk/vala/gnome-cook
+name: gnome-cook
+author: Joel Marty
+version: 0.1
+license: /usr/share/common-licenses/GPL-3
+builder: Native
+builder-options: !NativeBuilderOptions
+  debug: true
+  thread: true
+  disable-assert: false
+  disable-checking: false
+  disable-non-null: false
+  save-temps: true
+  quiet: false
+  other: ' -X "-export-dynamic"'
+executable-options:
+  program: 
+  arguments: 
+  working-dir: /home/joel/Code/Vala/gnome-cook/
+  environment: []
+files:
+- path: Model.vala
+- path: Domain.vala
+- path: main.vala
+- path: COPYING
+- path: DAO.vala
+- path: Application.vala
+packages:
+- name: gee-1.0
+- name: glib-2.0
+- name: gmodule-2.0
+- name: gtk+-2.0
+- name: libgnome-2.0
+- name: sqlite3
+vapi_dir: []

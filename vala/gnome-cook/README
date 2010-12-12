@@ -1,0 +1,25 @@
+###############################################################################
+                                   gnome-cook
+###############################################################################
+
+This program is a cooking recipe manager. It stores recipes in a database.
+Recipes (or meals) comprise a name, a rate, an ingredient list and most
+important, instructions.
+
+The program supports adding, updating and deleting recipes.
+
+Usage:
+
+just run the gnome-cook program
+
+make sure the database is present in the 'data' directory
+
+The program has the following dependencies:
+
+- libvala-0.10-0
+- libgee2
+- glib2
+- gtk+-2.0
+- libgnome-2.0
+- sqlite3
+
