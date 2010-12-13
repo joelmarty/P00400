@@ -82,8 +82,6 @@ struct _gnomecookuiApplicationPrivate {
 	GtkListStore* recipe_store;
 	GtkTreeViewColumn* name_column;
 	GtkCellRendererText* name_renderer;
-	GtkTextView* ingredients_view;
-	GtkTextView* recipe_view;
 	gnomecookmodelModel* model;
 };
 
@@ -107,7 +105,7 @@ gnomecookuiApplication* gnomecook_ui_application_construct (GType object_type, c
 static void _lambda0_ (gnomecookuiApplication* t, gnomecookuiApplication* self);
 static void __lambda0__gnomecook_ui_application_on_fatal (gnomecookuiApplication* _sender, gpointer self);
 static void _lambda1_ (gnomecookuiApplication* t, const char* text, gnomecookuiApplication* self);
-void gnomecook_ui_application_show_error_dialog (gnomecookuiApplication* self, const char* text);
+static void gnomecook_ui_application_show_error_dialog (gnomecookuiApplication* self, const char* text);
 static void __lambda1__gnomecook_ui_application_on_error (gnomecookuiApplication* _sender, const char* text, gpointer self);
 gnomecookmodelModel* gnomecook_model_model_new (void);
 gnomecookmodelModel* gnomecook_model_model_construct (GType object_type);
@@ -144,38 +142,38 @@ static int _vala_strcmp0 (const char * str1, const char * str2);
 
 
 
-#line 59 "Application.vala"
+#line 53 "Application.vala"
 static void _lambda0_ (gnomecookuiApplication* t, gnomecookuiApplication* self) {
-#line 59 "Application.vala"
+#line 53 "Application.vala"
 	g_return_if_fail (t != NULL);
-#line 59 "Application.vala"
+#line 53 "Application.vala"
 	gtk_main_quit ();
-#line 154 "Application.c"
+#line 152 "Application.c"
 }
 
 
-#line 59 "Application.vala"
+#line 53 "Application.vala"
 static void __lambda0__gnomecook_ui_application_on_fatal (gnomecookuiApplication* _sender, gpointer self) {
-#line 160 "Application.c"
+#line 158 "Application.c"
 	_lambda0_ (_sender, self);
 }
 
 
-#line 60 "Application.vala"
+#line 54 "Application.vala"
 static void _lambda1_ (gnomecookuiApplication* t, const char* text, gnomecookuiApplication* self) {
-#line 60 "Application.vala"
+#line 54 "Application.vala"
 	g_return_if_fail (t != NULL);
-#line 60 "Application.vala"
+#line 54 "Application.vala"
 	g_return_if_fail (text != NULL);
-#line 60 "Application.vala"
+#line 54 "Application.vala"
 	gnomecook_ui_application_show_error_dialog (self, text);
-#line 173 "Application.c"
+#line 171 "Application.c"
 }
 
 
-#line 60 "Application.vala"
+#line 54 "Application.vala"
 static void __lambda1__gnomecook_ui_application_on_error (gnomecookuiApplication* _sender, const char* text, gpointer self) {
-#line 179 "Application.c"
+#line 177 "Application.c"
 	_lambda1_ (_sender, text, self);
 }
 
@@ -185,54 +183,54 @@ static gpointer _g_object_ref0 (gpointer self) {
 }
 
 
-#line 53 "Application.vala"
+#line 47 "Application.vala"
 gnomecookuiApplication* gnomecook_ui_application_construct (GType object_type, char** args, int args_length1) {
-#line 191 "Application.c"
+#line 189 "Application.c"
 	gnomecookuiApplication * self;
 	GtkBuilder* _tmp0_;
 	GError * _inner_error_ = NULL;
-#line 53 "Application.vala"
+#line 47 "Application.vala"
 	self = (gnomecookuiApplication*) g_object_new (object_type, NULL);
-#line 55 "Application.vala"
+#line 49 "Application.vala"
 	self->priv->builder = (_tmp0_ = gtk_builder_new (), _g_object_unref0 (self->priv->builder), _tmp0_);
-#line 56 "Application.vala"
+#line 50 "Application.vala"
 	gtk_init (&args_length1, &args);
-#line 201 "Application.c"
+#line 199 "Application.c"
 	{
 		GObject* _tmp1_;
 		GtkWindow* _tmp2_;
 		gnomecookmodelModel* _tmp3_;
-#line 59 "Application.vala"
+#line 53 "Application.vala"
 		g_signal_connect_object (self, "on-fatal", (GCallback) __lambda0__gnomecook_ui_application_on_fatal, self, 0);
-#line 60 "Application.vala"
+#line 54 "Application.vala"
 		g_signal_connect_object (self, "on-error", (GCallback) __lambda1__gnomecook_ui_application_on_error, self, 0);
-#line 61 "Application.vala"
+#line 55 "Application.vala"
 		gtk_builder_add_from_file (self->priv->builder, "data/ui/recipes.glade", &_inner_error_);
-#line 212 "Application.c"
+#line 210 "Application.c"
 		if (_inner_error_ != NULL) {
 			if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
-				goto __catch6_gnomecook_dao_dao_error;
+				goto __catch0_gnomecook_dao_dao_error;
 			}
-			goto __catch6_g_error;
+			goto __catch0_g_error;
 		}
-#line 62 "Application.vala"
+#line 56 "Application.vala"
 		gtk_builder_connect_signals (self->priv->builder, self);
-#line 63 "Application.vala"
+#line 57 "Application.vala"
 		self->priv->window = (_tmp2_ = _g_object_ref0 ((_tmp1_ = gtk_builder_get_object (self->priv->builder, "gnomecook"), GTK_IS_WINDOW (_tmp1_) ? ((GtkWindow*) _tmp1_) : NULL)), _g_object_unref0 (self->priv->window), _tmp2_);
-#line 65 "Application.vala"
+#line 59 "Application.vala"
 		self->priv->model = (_tmp3_ = gnomecook_model_model_new (), _g_object_unref0 (self->priv->model), _tmp3_);
-#line 67 "Application.vala"
+#line 61 "Application.vala"
 		gnomecook_ui_application_init_list_store (self);
-#line 68 "Application.vala"
+#line 62 "Application.vala"
 		gnomecook_ui_application_populate_recipe_list (self);
-#line 70 "Application.vala"
+#line 64 "Application.vala"
 		gtk_widget_show_all ((GtkWidget*) self->priv->window);
-#line 71 "Application.vala"
+#line 65 "Application.vala"
 		gtk_main ();
-#line 233 "Application.c"
+#line 231 "Application.c"
 	}
-	goto __finally6;
-	__catch6_gnomecook_dao_dao_error:
+	goto __finally0;
+	__catch0_gnomecook_dao_dao_error:
 	{
 		GError * e;
 		e = _inner_error_;
@@ -241,20 +239,20 @@ gnomecookuiApplication* gnomecook_ui_application_construct (GType object_type, c
 			_g_error_free0 (e);
 		}
 	}
-	goto __finally6;
-	__catch6_g_error:
+	goto __finally0;
+	__catch0_g_error:
 	{
 		GError * e;
 		e = _inner_error_;
 		_inner_error_ = NULL;
 		{
-#line 76 "Application.vala"
-			g_debug ("Application.vala:76: Could not load UI: %s", e->message);
-#line 254 "Application.c"
+#line 70 "Application.vala"
+			g_debug ("Application.vala:70: Could not load UI: %s", e->message);
+#line 252 "Application.c"
 			_g_error_free0 (e);
 		}
 	}
-	__finally6:
+	__finally0:
 	if (_inner_error_ != NULL) {
 		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 		g_clear_error (&_inner_error_);
@@ -264,32 +262,32 @@ gnomecookuiApplication* gnomecook_ui_application_construct (GType object_type, c
 }
 
 
-#line 53 "Application.vala"
+#line 47 "Application.vala"
 gnomecookuiApplication* gnomecook_ui_application_new (char** args, int args_length1) {
-#line 53 "Application.vala"
+#line 47 "Application.vala"
 	return gnomecook_ui_application_construct (GNOMECOOK_UI_TYPE_APPLICATION, args, args_length1);
-#line 272 "Application.c"
+#line 270 "Application.c"
 }
 
 
-#line 82 "Application.vala"
+#line 76 "Application.vala"
 void gnomecook_ui_application_on_destroy (void) {
-#line 83 "Application.vala"
+#line 77 "Application.vala"
 	gtk_main_quit ();
-#line 280 "Application.c"
+#line 278 "Application.c"
 }
 
 
-#line 131 "Application.vala"
+#line 125 "Application.vala"
 static void _gnomecook_ui_application_on_recipe_selected_gtk_tree_view_row_activated (GtkTreeView* _sender, GtkTreePath* path, GtkTreeViewColumn* column, gpointer self) {
-#line 286 "Application.c"
+#line 284 "Application.c"
 	gnomecook_ui_application_on_recipe_selected (self, _sender, path, column);
 }
 
 
-#line 86 "Application.vala"
+#line 80 "Application.vala"
 static void gnomecook_ui_application_init_list_store (gnomecookuiApplication* self) {
-#line 293 "Application.c"
+#line 291 "Application.c"
 	GtkCellRendererText* _tmp0_;
 	GValue _tmp1_ = {0};
 	GValue _tmp2_;
@@ -297,88 +295,88 @@ static void gnomecook_ui_application_init_list_store (gnomecookuiApplication* se
 	GtkListStore* _tmp4_;
 	GObject* _tmp5_;
 	GtkTreeView* _tmp6_;
-#line 86 "Application.vala"
+#line 80 "Application.vala"
 	g_return_if_fail (self != NULL);
-#line 89 "Application.vala"
+#line 83 "Application.vala"
 	self->priv->name_renderer = (_tmp0_ = g_object_ref_sink ((GtkCellRendererText*) gtk_cell_renderer_text_new ()), _g_object_unref0 (self->priv->name_renderer), _tmp0_);
-#line 90 "Application.vala"
+#line 84 "Application.vala"
 	g_object_set_property ((GObject*) self->priv->name_renderer, "editable", (_tmp2_ = (g_value_init (&_tmp1_, G_TYPE_BOOLEAN), g_value_set_boolean (&_tmp1_, FALSE), _tmp1_), &_tmp2_));
-#line 307 "Application.c"
+#line 305 "Application.c"
 	G_IS_VALUE (&_tmp1_) ? (g_value_unset (&_tmp1_), NULL) : NULL;
-#line 93 "Application.vala"
+#line 87 "Application.vala"
 	self->priv->name_column = (_tmp3_ = g_object_ref_sink (gtk_tree_view_column_new ()), _g_object_unref0 (self->priv->name_column), _tmp3_);
-#line 94 "Application.vala"
+#line 88 "Application.vala"
 	gtk_cell_layout_pack_start ((GtkCellLayout*) self->priv->name_column, (GtkCellRenderer*) self->priv->name_renderer, TRUE);
-#line 95 "Application.vala"
+#line 89 "Application.vala"
 	gtk_tree_view_column_set_title (self->priv->name_column, "Recipe");
-#line 96 "Application.vala"
+#line 90 "Application.vala"
 	gtk_cell_layout_add_attribute ((GtkCellLayout*) self->priv->name_column, (GtkCellRenderer*) self->priv->name_renderer, "text", 1);
-#line 99 "Application.vala"
+#line 93 "Application.vala"
 	self->priv->recipe_store = (_tmp4_ = gtk_list_store_new (2, G_TYPE_INT64, G_TYPE_STRING), _g_object_unref0 (self->priv->recipe_store), _tmp4_);
-#line 102 "Application.vala"
+#line 96 "Application.vala"
 	self->priv->recipe_list = (_tmp6_ = _g_object_ref0 ((_tmp5_ = gtk_builder_get_object (self->priv->builder, "recipelist"), GTK_IS_TREE_VIEW (_tmp5_) ? ((GtkTreeView*) _tmp5_) : NULL)), _g_object_unref0 (self->priv->recipe_list), _tmp6_);
-#line 103 "Application.vala"
+#line 97 "Application.vala"
 	gtk_tree_view_append_column (self->priv->recipe_list, self->priv->name_column);
-#line 107 "Application.vala"
+#line 101 "Application.vala"
 	g_signal_connect_object (self->priv->recipe_list, "row-activated", (GCallback) _gnomecook_ui_application_on_recipe_selected_gtk_tree_view_row_activated, self, 0);
-#line 325 "Application.c"
+#line 323 "Application.c"
 }
 
 
-#line 111 "Application.vala"
+#line 105 "Application.vala"
 void gnomecook_ui_application_populate_recipe_list (gnomecookuiApplication* self) {
-#line 331 "Application.c"
+#line 329 "Application.c"
 	GtkTreeIter iter = {0};
 	GeeList* meals;
-#line 111 "Application.vala"
+#line 105 "Application.vala"
 	g_return_if_fail (self != NULL);
-#line 115 "Application.vala"
+#line 109 "Application.vala"
 	meals = gnomecook_model_model_get_all (self->priv->model);
-#line 116 "Application.vala"
-	g_debug ("Application.vala:116: got %d meals from db", gee_collection_get_size ((GeeCollection*) meals));
-#line 118 "Application.vala"
+#line 110 "Application.vala"
+	g_debug ("Application.vala:110: got %d meals from db", gee_collection_get_size ((GeeCollection*) meals));
+#line 112 "Application.vala"
 	if (self->priv->recipe_store->length != 0) {
-#line 119 "Application.vala"
-		g_debug ("Application.vala:119: clearing store");
-#line 120 "Application.vala"
+#line 113 "Application.vala"
+		g_debug ("Application.vala:113: clearing store");
+#line 114 "Application.vala"
 		gtk_list_store_clear (self->priv->recipe_store);
-#line 346 "Application.c"
+#line 344 "Application.c"
 	}
 	{
 		GeeIterator* _m_it;
-#line 123 "Application.vala"
+#line 117 "Application.vala"
 		_m_it = gee_iterable_iterator ((GeeIterable*) meals);
-#line 123 "Application.vala"
+#line 117 "Application.vala"
 		while (TRUE) {
-#line 354 "Application.c"
+#line 352 "Application.c"
 			gnomecookDomainMeal* m;
-#line 123 "Application.vala"
+#line 117 "Application.vala"
 			if (!gee_iterator_next (_m_it)) {
-#line 123 "Application.vala"
+#line 117 "Application.vala"
 				break;
-#line 360 "Application.c"
+#line 358 "Application.c"
 			}
-#line 123 "Application.vala"
+#line 117 "Application.vala"
 			m = (gnomecookDomainMeal*) gee_iterator_get (_m_it);
-#line 124 "Application.vala"
+#line 118 "Application.vala"
 			gtk_list_store_append (self->priv->recipe_store, &iter);
-#line 125 "Application.vala"
+#line 119 "Application.vala"
 			gtk_list_store_set (self->priv->recipe_store, &iter, 0, gnomecook_domain_meal_get_id (m), 1, gnomecook_domain_meal_get_name (m), -1);
-#line 368 "Application.c"
+#line 366 "Application.c"
 			_g_object_unref0 (m);
 		}
 		_g_object_unref0 (_m_it);
 	}
-#line 128 "Application.vala"
+#line 122 "Application.vala"
 	gtk_tree_view_set_model (self->priv->recipe_list, (GtkTreeModel*) self->priv->recipe_store);
-#line 375 "Application.c"
+#line 373 "Application.c"
 	_g_object_unref0 (meals);
 }
 
 
-#line 131 "Application.vala"
+#line 125 "Application.vala"
 void gnomecook_ui_application_on_recipe_selected (gnomecookuiApplication* self, GtkTreeView* sender, GtkTreePath* path, GtkTreeViewColumn* column) {
-#line 382 "Application.c"
+#line 380 "Application.c"
 	gnomecookDomainMeal* current_meal;
 	GtkTreeIter iter = {0};
 	GtkTreeSelection* selected_row;
@@ -398,66 +396,66 @@ void gnomecook_ui_application_on_recipe_selected (gnomecookuiApplication* self, 
 	GtkTextBuffer* rec_text;
 	GObject* _tmp9_;
 	GtkTextView* rec_view;
-#line 131 "Application.vala"
+#line 125 "Application.vala"
 	g_return_if_fail (self != NULL);
-#line 131 "Application.vala"
+#line 125 "Application.vala"
 	g_return_if_fail (sender != NULL);
-#line 131 "Application.vala"
+#line 125 "Application.vala"
 	g_return_if_fail (path != NULL);
-#line 131 "Application.vala"
+#line 125 "Application.vala"
 	g_return_if_fail (column != NULL);
-#line 410 "Application.c"
+#line 408 "Application.c"
 	current_meal = NULL;
-#line 137 "Application.vala"
+#line 131 "Application.vala"
 	selected_row = _g_object_ref0 (gtk_tree_view_get_selection (sender));
-#line 414 "Application.c"
+#line 412 "Application.c"
 	treemodel = NULL;
-#line 141 "Application.vala"
+#line 135 "Application.vala"
 	gtk_tree_selection_get_selected (selected_row, &_tmp0_, &iter);
-#line 141 "Application.vala"
+#line 135 "Application.vala"
 	treemodel = (_tmp1_ = _g_object_ref0 (_tmp0_), _g_object_unref0 (treemodel), _tmp1_);
-#line 146 "Application.vala"
+#line 140 "Application.vala"
 	gtk_tree_model_get_value (treemodel, &iter, 0, &_tmp2_);
-#line 146 "Application.vala"
+#line 140 "Application.vala"
 	col0 = (_tmp3_ = _tmp2_, G_IS_VALUE (&col0) ? (g_value_unset (&col0), NULL) : NULL, _tmp3_);
-#line 149 "Application.vala"
+#line 143 "Application.vala"
 	if (g_value_get_int64 (&col0) != 0) {
-#line 426 "Application.c"
+#line 424 "Application.c"
 		gnomecookDomainMeal* _tmp4_;
-#line 150 "Application.vala"
+#line 144 "Application.vala"
 		current_meal = (_tmp4_ = gnomecook_model_model_get_one (self->priv->model, g_value_get_int64 (&col0)), _g_object_unref0 (current_meal), _tmp4_);
-#line 430 "Application.c"
+#line 428 "Application.c"
 	} else {
 		gnomecookDomainMeal* _tmp5_;
-#line 152 "Application.vala"
+#line 146 "Application.vala"
 		current_meal = (_tmp5_ = gnomecook_domain_meal_new (), _g_object_unref0 (current_meal), _tmp5_);
-#line 435 "Application.c"
+#line 433 "Application.c"
 	}
-#line 156 "Application.vala"
+#line 150 "Application.vala"
 	rate_adj = _g_object_ref0 ((_tmp6_ = gtk_builder_get_object (self->priv->builder, "rateadjustment"), GTK_IS_ADJUSTMENT (_tmp6_) ? ((GtkAdjustment*) _tmp6_) : NULL));
-#line 157 "Application.vala"
+#line 151 "Application.vala"
 	gtk_adjustment_set_value (rate_adj, gnomecook_domain_meal_get_rating (current_meal));
-#line 160 "Application.vala"
+#line 154 "Application.vala"
 	name_text = _g_object_ref0 ((_tmp7_ = gtk_builder_get_object (self->priv->builder, "nameentry"), GTK_IS_ENTRY (_tmp7_) ? ((GtkEntry*) _tmp7_) : NULL));
-#line 161 "Application.vala"
+#line 155 "Application.vala"
 	gtk_entry_set_text (name_text, gnomecook_domain_meal_get_name (current_meal));
-#line 164 "Application.vala"
+#line 158 "Application.vala"
 	ing_text = gtk_text_buffer_new (NULL);
-#line 165 "Application.vala"
+#line 159 "Application.vala"
 	gtk_text_buffer_set_text (ing_text, gnomecook_domain_meal_get_ingredients (current_meal), -1);
-#line 166 "Application.vala"
+#line 160 "Application.vala"
 	ing_view = _g_object_ref0 ((_tmp8_ = gtk_builder_get_object (self->priv->builder, "ingredientview"), GTK_IS_TEXT_VIEW (_tmp8_) ? ((GtkTextView*) _tmp8_) : NULL));
-#line 169 "Application.vala"
+#line 163 "Application.vala"
 	rec_text = gtk_text_buffer_new (NULL);
-#line 170 "Application.vala"
+#line 164 "Application.vala"
 	gtk_text_buffer_set_text (rec_text, gnomecook_domain_meal_get_instructions (current_meal), -1);
-#line 171 "Application.vala"
+#line 165 "Application.vala"
 	rec_view = _g_object_ref0 ((_tmp9_ = gtk_builder_get_object (self->priv->builder, "recipeview"), GTK_IS_TEXT_VIEW (_tmp9_) ? ((GtkTextView*) _tmp9_) : NULL));
-#line 174 "Application.vala"
+#line 168 "Application.vala"
 	gtk_text_view_set_buffer (ing_view, ing_text);
-#line 175 "Application.vala"
+#line 169 "Application.vala"
 	gtk_text_view_set_buffer (rec_view, rec_text);
-#line 461 "Application.c"
+#line 459 "Application.c"
 	_g_object_unref0 (rec_view);
 	_g_object_unref0 (rec_text);
 	_g_object_unref0 (ing_view);
@@ -471,9 +469,9 @@ void gnomecook_ui_application_on_recipe_selected (gnomecookuiApplication* self, 
 }
 
 
-#line 180 "Application.vala"
+#line 174 "Application.vala"
 void gnomecook_ui_application_on_recipe_add (GtkAction* sender, gnomecookuiApplication* self) {
-#line 477 "Application.c"
+#line 475 "Application.c"
 	GtkTreeIter iter = {0};
 	GObject* _tmp0_;
 	GtkAdjustment* rate_adj;
@@ -485,39 +483,39 @@ void gnomecook_ui_application_on_recipe_add (GtkAction* sender, gnomecookuiAppli
 	GtkTextBuffer* rec_text;
 	GObject* _tmp3_;
 	GtkTextView* rec_view;
-#line 180 "Application.vala"
+#line 174 "Application.vala"
 	g_return_if_fail (self != NULL);
-#line 180 "Application.vala"
+#line 174 "Application.vala"
 	g_return_if_fail (sender != NULL);
-#line 186 "Application.vala"
+#line 180 "Application.vala"
 	rate_adj = _g_object_ref0 ((_tmp0_ = gtk_builder_get_object (self->priv->builder, "rateadjustment"), GTK_IS_ADJUSTMENT (_tmp0_) ? ((GtkAdjustment*) _tmp0_) : NULL));
-#line 187 "Application.vala"
+#line 181 "Application.vala"
 	gtk_adjustment_set_value (rate_adj, (double) 0);
-#line 190 "Application.vala"
+#line 184 "Application.vala"
 	name_text = _g_object_ref0 ((_tmp1_ = gtk_builder_get_object (self->priv->builder, "nameentry"), GTK_IS_ENTRY (_tmp1_) ? ((GtkEntry*) _tmp1_) : NULL));
-#line 191 "Application.vala"
+#line 185 "Application.vala"
 	gtk_entry_set_text (name_text, "");
-#line 194 "Application.vala"
+#line 188 "Application.vala"
 	ing_text = gtk_text_buffer_new (NULL);
-#line 195 "Application.vala"
+#line 189 "Application.vala"
 	gtk_text_buffer_set_text (ing_text, "", -1);
-#line 196 "Application.vala"
+#line 190 "Application.vala"
 	ing_view = _g_object_ref0 ((_tmp2_ = gtk_builder_get_object (self->priv->builder, "ingredientview"), GTK_IS_TEXT_VIEW (_tmp2_) ? ((GtkTextView*) _tmp2_) : NULL));
-#line 199 "Application.vala"
+#line 193 "Application.vala"
 	rec_text = gtk_text_buffer_new (NULL);
-#line 200 "Application.vala"
+#line 194 "Application.vala"
 	gtk_text_buffer_set_text (rec_text, "", -1);
-#line 201 "Application.vala"
+#line 195 "Application.vala"
 	rec_view = _g_object_ref0 ((_tmp3_ = gtk_builder_get_object (self->priv->builder, "recipeview"), GTK_IS_TEXT_VIEW (_tmp3_) ? ((GtkTextView*) _tmp3_) : NULL));
-#line 204 "Application.vala"
+#line 198 "Application.vala"
 	gtk_text_view_set_buffer (ing_view, ing_text);
-#line 205 "Application.vala"
+#line 199 "Application.vala"
 	gtk_text_view_set_buffer (rec_view, rec_text);
-#line 208 "Application.vala"
+#line 202 "Application.vala"
 	gtk_list_store_append (self->priv->recipe_store, &iter);
-#line 209 "Application.vala"
+#line 203 "Application.vala"
 	gtk_list_store_set (self->priv->recipe_store, &iter, 0, 0, 1, "new recipe", -1);
-#line 521 "Application.c"
+#line 519 "Application.c"
 	_g_object_unref0 (rec_view);
 	_g_object_unref0 (rec_text);
 	_g_object_unref0 (ing_view);
@@ -540,9 +538,9 @@ static gpointer __gtk_tree_iter_dup0 (gpointer self) {
 }
 
 
-#line 213 "Application.vala"
+#line 207 "Application.vala"
 void gnomecook_ui_application_on_recipe_save (GtkAction* sender, gnomecookuiApplication* self) {
-#line 546 "Application.c"
+#line 544 "Application.c"
 	gboolean is_update;
 	GtkTreeIter* iter = NULL;
 	GtkTreeSelection* selected_row;
@@ -569,115 +567,115 @@ void gnomecook_ui_application_on_recipe_save (GtkAction* sender, gnomecookuiAppl
 	GtkTextBuffer* rec_text;
 	char* _tmp14_ = NULL;
 	char* _tmp15_;
-#line 213 "Application.vala"
+#line 207 "Application.vala"
 	g_return_if_fail (self != NULL);
-#line 213 "Application.vala"
+#line 207 "Application.vala"
 	g_return_if_fail (sender != NULL);
-#line 215 "Application.vala"
+#line 209 "Application.vala"
 	is_update = FALSE;
-#line 219 "Application.vala"
+#line 213 "Application.vala"
 	selected_row = _g_object_ref0 (gtk_tree_view_get_selection (self->priv->recipe_list));
-#line 581 "Application.c"
+#line 579 "Application.c"
 	treemodel = NULL;
-#line 223 "Application.vala"
+#line 217 "Application.vala"
 	(gtk_tree_selection_get_selected (selected_row, &_tmp0_, &_tmp2_), treemodel = (_tmp1_ = _g_object_ref0 (_tmp0_), _g_object_unref0 (treemodel), _tmp1_));
-#line 223 "Application.vala"
+#line 217 "Application.vala"
 	iter = (_tmp3_ = __gtk_tree_iter_dup0 (&_tmp2_), _g_free0 (iter), _tmp3_);
-#line 228 "Application.vala"
+#line 222 "Application.vala"
 	gtk_tree_model_get_value (treemodel, iter, 0, &_tmp4_);
-#line 228 "Application.vala"
+#line 222 "Application.vala"
 	col0 = (_tmp5_ = _tmp4_, G_IS_VALUE (&col0) ? (g_value_unset (&col0), NULL) : NULL, _tmp5_);
-#line 230 "Application.vala"
+#line 224 "Application.vala"
 	if (g_value_get_int64 (&col0) != 0) {
-#line 231 "Application.vala"
+#line 225 "Application.vala"
 		is_update = TRUE;
-#line 595 "Application.c"
+#line 593 "Application.c"
 	}
 	current_meal = NULL;
-#line 236 "Application.vala"
+#line 230 "Application.vala"
 	if (is_update) {
-#line 600 "Application.c"
+#line 598 "Application.c"
 		gnomecookDomainMeal* _tmp6_;
-#line 237 "Application.vala"
+#line 231 "Application.vala"
 		current_meal = (_tmp6_ = gnomecook_model_model_get_one (self->priv->model, g_value_get_int64 (&col0)), _g_object_unref0 (current_meal), _tmp6_);
-#line 604 "Application.c"
+#line 602 "Application.c"
 	} else {
 		gnomecookDomainMeal* _tmp7_;
-#line 239 "Application.vala"
+#line 233 "Application.vala"
 		current_meal = (_tmp7_ = gnomecook_domain_meal_new (), _g_object_unref0 (current_meal), _tmp7_);
-#line 609 "Application.c"
+#line 607 "Application.c"
 	}
-#line 241 "Application.vala"
+#line 235 "Application.vala"
 	if (current_meal == NULL) {
-#line 242 "Application.vala"
+#line 236 "Application.vala"
 		g_signal_emit_by_name (self, "on-error", "no meal selected!");
-#line 615 "Application.c"
+#line 613 "Application.c"
 		_g_object_unref0 (current_meal);
 		G_IS_VALUE (&col0) ? (g_value_unset (&col0), NULL) : NULL;
 		_g_object_unref0 (treemodel);
 		_g_object_unref0 (selected_row);
 		_g_free0 (iter);
-#line 243 "Application.vala"
+#line 237 "Application.vala"
 		return;
-#line 623 "Application.c"
+#line 621 "Application.c"
 	}
-#line 247 "Application.vala"
+#line 241 "Application.vala"
 	name_text = _g_object_ref0 ((_tmp8_ = gtk_builder_get_object (self->priv->builder, "nameentry"), GTK_IS_ENTRY (_tmp8_) ? ((GtkEntry*) _tmp8_) : NULL));
-#line 248 "Application.vala"
+#line 242 "Application.vala"
 	if (_vala_strcmp0 (gtk_entry_get_text (name_text), "") == 0) {
-#line 249 "Application.vala"
+#line 243 "Application.vala"
 		g_signal_emit_by_name (self, "on-error", "A name is required!");
-#line 631 "Application.c"
+#line 629 "Application.c"
 		_g_object_unref0 (name_text);
 		_g_object_unref0 (current_meal);
 		G_IS_VALUE (&col0) ? (g_value_unset (&col0), NULL) : NULL;
 		_g_object_unref0 (treemodel);
 		_g_object_unref0 (selected_row);
 		_g_free0 (iter);
-#line 250 "Application.vala"
+#line 244 "Application.vala"
 		return;
-#line 640 "Application.c"
+#line 638 "Application.c"
 	}
-#line 252 "Application.vala"
+#line 246 "Application.vala"
 	gnomecook_domain_meal_set_name (current_meal, gtk_entry_get_text (name_text));
-#line 255 "Application.vala"
+#line 249 "Application.vala"
 	rate_adj = _g_object_ref0 ((_tmp9_ = gtk_builder_get_object (self->priv->builder, "rateadjustment"), GTK_IS_ADJUSTMENT (_tmp9_) ? ((GtkAdjustment*) _tmp9_) : NULL));
-#line 256 "Application.vala"
+#line 250 "Application.vala"
 	gnomecook_domain_meal_set_rating (current_meal, gtk_adjustment_get_value (rate_adj));
-#line 259 "Application.vala"
+#line 253 "Application.vala"
 	ing_view = _g_object_ref0 ((_tmp10_ = gtk_builder_get_object (self->priv->builder, "ingredientview"), GTK_IS_TEXT_VIEW (_tmp10_) ? ((GtkTextView*) _tmp10_) : NULL));
-#line 260 "Application.vala"
+#line 254 "Application.vala"
 	ing_text = _g_object_ref0 (gtk_text_view_get_buffer (ing_view));
-#line 261 "Application.vala"
+#line 255 "Application.vala"
 	gnomecook_domain_meal_set_ingredients (current_meal, _tmp12_ = (g_object_get (ing_text, "text", &_tmp11_, NULL), _tmp11_));
-#line 654 "Application.c"
+#line 652 "Application.c"
 	_g_free0 (_tmp12_);
-#line 264 "Application.vala"
+#line 258 "Application.vala"
 	rec_view = _g_object_ref0 ((_tmp13_ = gtk_builder_get_object (self->priv->builder, "recipeview"), GTK_IS_TEXT_VIEW (_tmp13_) ? ((GtkTextView*) _tmp13_) : NULL));
-#line 265 "Application.vala"
+#line 259 "Application.vala"
 	rec_text = _g_object_ref0 (gtk_text_view_get_buffer (rec_view));
-#line 266 "Application.vala"
+#line 260 "Application.vala"
 	gnomecook_domain_meal_set_instructions (current_meal, _tmp15_ = (g_object_get (rec_text, "text", &_tmp14_, NULL), _tmp14_));
-#line 662 "Application.c"
+#line 660 "Application.c"
 	_g_free0 (_tmp15_);
-#line 269 "Application.vala"
+#line 263 "Application.vala"
 	gnomecook_domain_meal_set_cooking_time (current_meal, (double) 0);
-#line 271 "Application.vala"
+#line 265 "Application.vala"
 	if (is_update) {
-#line 272 "Application.vala"
+#line 266 "Application.vala"
 		gnomecook_model_model_update (self->priv->model, current_meal);
-#line 670 "Application.c"
+#line 668 "Application.c"
 	} else {
 		gnomecookDomainMeal* _tmp16_;
-#line 275 "Application.vala"
+#line 269 "Application.vala"
 		gnomecook_model_model_add (self->priv->model, current_meal);
-#line 276 "Application.vala"
+#line 270 "Application.vala"
 		current_meal = (_tmp16_ = NULL, _g_object_unref0 (current_meal), _tmp16_);
-#line 677 "Application.c"
+#line 675 "Application.c"
 	}
-#line 280 "Application.vala"
+#line 274 "Application.vala"
 	gnomecook_ui_application_populate_recipe_list (self);
-#line 681 "Application.c"
+#line 679 "Application.c"
 	_g_object_unref0 (rec_text);
 	_g_object_unref0 (rec_view);
 	_g_object_unref0 (ing_text);
@@ -692,9 +690,9 @@ void gnomecook_ui_application_on_recipe_save (GtkAction* sender, gnomecookuiAppl
 }
 
 
-#line 284 "Application.vala"
+#line 278 "Application.vala"
 void gnomecook_ui_application_on_recipe_delete (GtkAction* sender, gnomecookuiApplication* self) {
-#line 698 "Application.c"
+#line 696 "Application.c"
 	GtkTreeIter iter = {0};
 	GtkTreeSelection* selected_row;
 	GtkTreeModel* treemodel;
@@ -714,66 +712,66 @@ void gnomecook_ui_application_on_recipe_delete (GtkAction* sender, gnomecookuiAp
 	GtkTextBuffer* rec_text;
 	GObject* _tmp7_;
 	GtkTextView* rec_view;
-#line 284 "Application.vala"
+#line 278 "Application.vala"
 	g_return_if_fail (self != NULL);
-#line 284 "Application.vala"
+#line 278 "Application.vala"
 	g_return_if_fail (sender != NULL);
-#line 288 "Application.vala"
+#line 282 "Application.vala"
 	selected_row = _g_object_ref0 (gtk_tree_view_get_selection (self->priv->recipe_list));
-#line 724 "Application.c"
+#line 722 "Application.c"
 	treemodel = NULL;
-#line 292 "Application.vala"
+#line 286 "Application.vala"
 	gtk_tree_selection_get_selected (selected_row, &_tmp0_, &iter);
-#line 292 "Application.vala"
+#line 286 "Application.vala"
 	treemodel = (_tmp1_ = _g_object_ref0 (_tmp0_), _g_object_unref0 (treemodel), _tmp1_);
-#line 297 "Application.vala"
+#line 291 "Application.vala"
 	gtk_tree_model_get_value (treemodel, &iter, 0, &_tmp2_);
-#line 297 "Application.vala"
+#line 291 "Application.vala"
 	col0 = (_tmp3_ = _tmp2_, G_IS_VALUE (&col0) ? (g_value_unset (&col0), NULL) : NULL, _tmp3_);
-#line 300 "Application.vala"
+#line 294 "Application.vala"
 	current_meal = gnomecook_model_model_get_one (self->priv->model, g_value_get_int64 (&col0));
-#line 301 "Application.vala"
+#line 295 "Application.vala"
 	if (current_meal == NULL) {
-#line 302 "Application.vala"
+#line 296 "Application.vala"
 		g_signal_emit_by_name (self, "on-error", "No selected meal!");
-#line 740 "Application.c"
+#line 738 "Application.c"
 		_g_object_unref0 (current_meal);
 		G_IS_VALUE (&col0) ? (g_value_unset (&col0), NULL) : NULL;
 		_g_object_unref0 (treemodel);
 		_g_object_unref0 (selected_row);
-#line 303 "Application.vala"
+#line 297 "Application.vala"
 		return;
-#line 747 "Application.c"
+#line 745 "Application.c"
 	}
-#line 305 "Application.vala"
+#line 299 "Application.vala"
 	gnomecook_model_model_del (self->priv->model, current_meal);
-#line 306 "Application.vala"
+#line 300 "Application.vala"
 	gtk_list_store_remove (self->priv->recipe_store, &iter);
-#line 310 "Application.vala"
+#line 304 "Application.vala"
 	rate_adj = _g_object_ref0 ((_tmp4_ = gtk_builder_get_object (self->priv->builder, "rateadjustment"), GTK_IS_ADJUSTMENT (_tmp4_) ? ((GtkAdjustment*) _tmp4_) : NULL));
-#line 311 "Application.vala"
+#line 305 "Application.vala"
 	gtk_adjustment_set_value (rate_adj, (double) 0);
-#line 314 "Application.vala"
+#line 308 "Application.vala"
 	name_text = _g_object_ref0 ((_tmp5_ = gtk_builder_get_object (self->priv->builder, "nameentry"), GTK_IS_ENTRY (_tmp5_) ? ((GtkEntry*) _tmp5_) : NULL));
-#line 315 "Application.vala"
+#line 309 "Application.vala"
 	gtk_entry_set_text (name_text, "");
-#line 318 "Application.vala"
+#line 312 "Application.vala"
 	ing_text = gtk_text_buffer_new (NULL);
-#line 319 "Application.vala"
+#line 313 "Application.vala"
 	gtk_text_buffer_set_text (ing_text, "", -1);
-#line 320 "Application.vala"
+#line 314 "Application.vala"
 	ing_view = _g_object_ref0 ((_tmp6_ = gtk_builder_get_object (self->priv->builder, "ingredientview"), GTK_IS_TEXT_VIEW (_tmp6_) ? ((GtkTextView*) _tmp6_) : NULL));
-#line 323 "Application.vala"
+#line 317 "Application.vala"
 	rec_text = gtk_text_buffer_new (NULL);
-#line 324 "Application.vala"
+#line 318 "Application.vala"
 	gtk_text_buffer_set_text (rec_text, "", -1);
-#line 325 "Application.vala"
+#line 319 "Application.vala"
 	rec_view = _g_object_ref0 ((_tmp7_ = gtk_builder_get_object (self->priv->builder, "recipeview"), GTK_IS_TEXT_VIEW (_tmp7_) ? ((GtkTextView*) _tmp7_) : NULL));
-#line 328 "Application.vala"
+#line 322 "Application.vala"
 	gtk_text_view_set_buffer (ing_view, ing_text);
-#line 329 "Application.vala"
+#line 323 "Application.vala"
 	gtk_text_view_set_buffer (rec_view, rec_text);
-#line 777 "Application.c"
+#line 775 "Application.c"
 	_g_object_unref0 (rec_view);
 	_g_object_unref0 (rec_text);
 	_g_object_unref0 (ing_view);
@@ -787,25 +785,25 @@ void gnomecook_ui_application_on_recipe_delete (GtkAction* sender, gnomecookuiAp
 }
 
 
-#line 332 "Application.vala"
-void gnomecook_ui_application_show_error_dialog (gnomecookuiApplication* self, const char* text) {
-#line 793 "Application.c"
+#line 326 "Application.vala"
+static void gnomecook_ui_application_show_error_dialog (gnomecookuiApplication* self, const char* text) {
+#line 791 "Application.c"
 	GtkMessageDialog* dialog;
-#line 332 "Application.vala"
+#line 326 "Application.vala"
 	g_return_if_fail (self != NULL);
-#line 332 "Application.vala"
+#line 326 "Application.vala"
 	g_return_if_fail (text != NULL);
-#line 333 "Application.vala"
-	g_debug ("Application.vala:333: an error was thrown: %s", text);
-#line 334 "Application.vala"
+#line 327 "Application.vala"
+	g_debug ("Application.vala:327: an error was thrown: %s", text);
+#line 328 "Application.vala"
 	dialog = g_object_ref_sink ((GtkMessageDialog*) gtk_message_dialog_new (self->priv->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CANCEL, NULL));
-#line 335 "Application.vala"
+#line 329 "Application.vala"
 	g_object_set (dialog, "text", text, NULL);
-#line 336 "Application.vala"
+#line 330 "Application.vala"
 	gtk_dialog_run ((GtkDialog*) dialog);
-#line 337 "Application.vala"
+#line 331 "Application.vala"
 	gtk_object_destroy ((GtkObject*) dialog);
-#line 809 "Application.c"
+#line 807 "Application.c"
 	_g_object_unref0 (dialog);
 }
 
@@ -827,8 +825,6 @@ static void gnomecook_ui_application_instance_init (gnomecookuiApplication * sel
 	self->priv->recipe_store = NULL;
 	self->priv->name_column = NULL;
 	self->priv->name_renderer = NULL;
-	self->priv->ingredients_view = NULL;
-	self->priv->recipe_view = NULL;
 	self->priv->model = NULL;
 }
 
@@ -842,8 +838,6 @@ static void gnomecook_ui_application_finalize (GObject* obj) {
 	_g_object_unref0 (self->priv->recipe_store);
 	_g_object_unref0 (self->priv->name_column);
 	_g_object_unref0 (self->priv->name_renderer);
-	_g_object_unref0 (self->priv->ingredients_view);
-	_g_object_unref0 (self->priv->recipe_view);
 	_g_object_unref0 (self->priv->model);
 	G_OBJECT_CLASS (gnomecook_ui_application_parent_class)->finalize (obj);
 }

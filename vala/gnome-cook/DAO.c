@@ -210,43 +210,28 @@ sqlite3* gnomecook_dao_dao_interface_connect (GError** error) {
 }
 
 
-#line 25 "main.vala"
 gpointer gnomecook_dao_dao_interface_get_one (gnomecookDAODAOInterface* self, gint64 id, GError** error) {
-#line 25 "main.vala"
 	return GNOMECOOK_DAO_DAO_INTERFACE_GET_INTERFACE (self)->get_one (self, id, error);
-#line 218 "DAO.c"
 }
 
 
-#line 25 "main.vala"
 GeeList* gnomecook_dao_dao_interface_get_all (gnomecookDAODAOInterface* self, GError** error) {
-#line 25 "main.vala"
 	return GNOMECOOK_DAO_DAO_INTERFACE_GET_INTERFACE (self)->get_all (self, error);
-#line 226 "DAO.c"
 }
 
 
-#line 25 "main.vala"
 void gnomecook_dao_dao_interface_add (gnomecookDAODAOInterface* self, gconstpointer obj, GError** error) {
-#line 25 "main.vala"
 	GNOMECOOK_DAO_DAO_INTERFACE_GET_INTERFACE (self)->add (self, obj, error);
-#line 234 "DAO.c"
 }
 
 
-#line 25 "main.vala"
 void gnomecook_dao_dao_interface_update (gnomecookDAODAOInterface* self, gconstpointer obj, GError** error) {
-#line 25 "main.vala"
 	GNOMECOOK_DAO_DAO_INTERFACE_GET_INTERFACE (self)->update (self, obj, error);
-#line 242 "DAO.c"
 }
 
 
-#line 25 "main.vala"
 void gnomecook_dao_dao_interface_del (gnomecookDAODAOInterface* self, gconstpointer obj, GError** error) {
-#line 25 "main.vala"
 	GNOMECOOK_DAO_DAO_INTERFACE_GET_INTERFACE (self)->del (self, obj, error);
-#line 250 "DAO.c"
 }
 
 
@@ -283,23 +268,23 @@ static gpointer _g_object_ref0 (gpointer self) {
 
 #line 69 "DAO.vala"
 gnomecookDAOMealDAO* gnomecook_dao_meal_dao_get_instance (GError** error) {
-#line 287 "DAO.c"
+#line 272 "DAO.c"
 	gnomecookDAOMealDAO* result = NULL;
 	GError * _inner_error_ = NULL;
 #line 70 "DAO.vala"
 	g_debug ("DAO.vala:70: MealDAO.get_instance()");
 #line 72 "DAO.vala"
 	if (gnomecook_dao_meal_dao__instance == NULL) {
-#line 294 "DAO.c"
+#line 279 "DAO.c"
 		{
 			gnomecookDAOMealDAO* _tmp0_;
 			gnomecookDAOMealDAO* _tmp1_;
 #line 74 "DAO.vala"
 			_tmp0_ = gnomecook_dao_meal_dao_new (&_inner_error_);
-#line 300 "DAO.c"
+#line 285 "DAO.c"
 			if (_inner_error_ != NULL) {
 				if (g_error_matches (_inner_error_, GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_OPEN)) {
-					goto __catch4_gnomecook_dao_dao_error_e_open;
+					goto __catch1_gnomecook_dao_dao_error_e_open;
 				}
 				g_critical ("file %s: line %d: unexpected error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 				g_clear_error (&_inner_error_);
@@ -307,10 +292,10 @@ gnomecookDAOMealDAO* gnomecook_dao_meal_dao_get_instance (GError** error) {
 			}
 #line 74 "DAO.vala"
 			gnomecook_dao_meal_dao__instance = (_tmp1_ = _tmp0_, _g_object_unref0 (gnomecook_dao_meal_dao__instance), _tmp1_);
-#line 311 "DAO.c"
+#line 296 "DAO.c"
 		}
-		goto __finally4;
-		__catch4_gnomecook_dao_dao_error_e_open:
+		goto __finally1;
+		__catch1_gnomecook_dao_dao_error_e_open:
 		{
 			GError * e;
 			e = _inner_error_;
@@ -319,12 +304,12 @@ gnomecookDAOMealDAO* gnomecook_dao_meal_dao_get_instance (GError** error) {
 				_inner_error_ = _g_error_copy0 (e);
 				{
 					_g_error_free0 (e);
-					goto __finally4;
+					goto __finally1;
 				}
 				_g_error_free0 (e);
 			}
 		}
-		__finally4:
+		__finally1:
 		if (_inner_error_ != NULL) {
 			if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
 				g_propagate_error (error, _inner_error_);
@@ -339,27 +324,27 @@ gnomecookDAOMealDAO* gnomecook_dao_meal_dao_get_instance (GError** error) {
 	result = _g_object_ref0 (gnomecook_dao_meal_dao__instance);
 #line 79 "DAO.vala"
 	return result;
-#line 343 "DAO.c"
+#line 328 "DAO.c"
 }
 
 
 #line 82 "DAO.vala"
 static gnomecookDAOMealDAO* gnomecook_dao_meal_dao_construct (GType object_type, GError** error) {
-#line 349 "DAO.c"
+#line 334 "DAO.c"
 	gnomecookDAOMealDAO * self;
 	GError * _inner_error_ = NULL;
 #line 82 "DAO.vala"
 	self = (gnomecookDAOMealDAO*) g_object_new (object_type, NULL);
-#line 354 "DAO.c"
+#line 339 "DAO.c"
 	{
 		sqlite3* _tmp0_;
 		sqlite3* _tmp1_;
 #line 85 "DAO.vala"
 		_tmp0_ = gnomecook_dao_dao_interface_connect (&_inner_error_);
-#line 360 "DAO.c"
+#line 345 "DAO.c"
 		if (_inner_error_ != NULL) {
 			if (g_error_matches (_inner_error_, GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_OPEN)) {
-				goto __catch5_gnomecook_dao_dao_error_e_open;
+				goto __catch2_gnomecook_dao_dao_error_e_open;
 			}
 			g_critical ("file %s: line %d: unexpected error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 			g_clear_error (&_inner_error_);
@@ -367,10 +352,10 @@ static gnomecookDAOMealDAO* gnomecook_dao_meal_dao_construct (GType object_type,
 		}
 #line 85 "DAO.vala"
 		self->priv->_db = (_tmp1_ = _tmp0_, _sqlite3_close0 (self->priv->_db), _tmp1_);
-#line 371 "DAO.c"
+#line 356 "DAO.c"
 	}
-	goto __finally5;
-	__catch5_gnomecook_dao_dao_error_e_open:
+	goto __finally2;
+	__catch2_gnomecook_dao_dao_error_e_open:
 	{
 		GError * e;
 		e = _inner_error_;
@@ -379,12 +364,12 @@ static gnomecookDAOMealDAO* gnomecook_dao_meal_dao_construct (GType object_type,
 			_inner_error_ = _g_error_copy0 (e);
 			{
 				_g_error_free0 (e);
-				goto __finally5;
+				goto __finally2;
 			}
 			_g_error_free0 (e);
 		}
 	}
-	__finally5:
+	__finally2:
 	if (_inner_error_ != NULL) {
 		if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
 			g_propagate_error (error, _inner_error_);
@@ -404,13 +389,13 @@ static gnomecookDAOMealDAO* gnomecook_dao_meal_dao_construct (GType object_type,
 static gnomecookDAOMealDAO* gnomecook_dao_meal_dao_new (GError** error) {
 #line 82 "DAO.vala"
 	return gnomecook_dao_meal_dao_construct (GNOMECOOK_DAO_TYPE_MEAL_DAO, error);
-#line 408 "DAO.c"
+#line 393 "DAO.c"
 }
 
 
 #line 91 "DAO.vala"
 static gnomecookDomainMeal* gnomecook_dao_meal_dao_real_get_one (gnomecookDAODAOInterface* base, gint64 id, GError** error) {
-#line 414 "DAO.c"
+#line 399 "DAO.c"
 	gnomecookDAOMealDAO * self;
 	gnomecookDomainMeal* result = NULL;
 	char* qry;
@@ -424,7 +409,7 @@ static gnomecookDomainMeal* gnomecook_dao_meal_dao_real_get_one (gnomecookDAODAO
 	self = (gnomecookDAOMealDAO*) base;
 #line 93 "DAO.vala"
 	qry = g_strdup ("SELECT id, name, cooking_time, instructions, rating, ingredients " "FROM meals WHERE id = ?");
-#line 428 "DAO.c"
+#line 413 "DAO.c"
 	stmt = NULL;
 #line 97 "DAO.vala"
 	res = (_tmp1_ = sqlite3_prepare_v2 (self->priv->_db, qry, -1, &_tmp0_, NULL), stmt = (_tmp2_ = _tmp0_, _sqlite3_finalize0 (stmt), _tmp2_), _tmp1_);
@@ -436,7 +421,7 @@ static gnomecookDomainMeal* gnomecook_dao_meal_dao_real_get_one (gnomecookDAODAO
 	res = sqlite3_step (stmt);
 #line 103 "DAO.vala"
 	if (res != SQLITE_ROW) {
-#line 440 "DAO.c"
+#line 425 "DAO.c"
 		char* _tmp3_;
 		char* _tmp4_;
 		char* _tmp5_;
@@ -471,19 +456,19 @@ static gnomecookDomainMeal* gnomecook_dao_meal_dao_real_get_one (gnomecookDAODAO
 	gnomecook_domain_meal_set_rating (m, sqlite3_value_double (sqlite3_column_value (stmt, 4)));
 #line 114 "DAO.vala"
 	gnomecook_domain_meal_set_ingredients (m, sqlite3_column_text (stmt, 5));
-#line 475 "DAO.c"
+#line 460 "DAO.c"
 	result = m;
 	_sqlite3_finalize0 (stmt);
 	_g_free0 (qry);
 #line 116 "DAO.vala"
 	return result;
-#line 481 "DAO.c"
+#line 466 "DAO.c"
 }
 
 
 #line 119 "DAO.vala"
 static GeeList* gnomecook_dao_meal_dao_real_get_all (gnomecookDAODAOInterface* base, GError** error) {
-#line 487 "DAO.c"
+#line 472 "DAO.c"
 	gnomecookDAOMealDAO * self;
 	GeeList* result = NULL;
 	char* qry;
@@ -500,13 +485,13 @@ static GeeList* gnomecook_dao_meal_dao_real_get_all (gnomecookDAODAOInterface* b
 "meals;");
 #line 122 "DAO.vala"
 	meals = (GeeList*) gee_array_list_new (GNOMECOOK_DOMAIN_TYPE_MEAL, (GBoxedCopyFunc) g_object_ref, g_object_unref, NULL);
-#line 503 "DAO.c"
+#line 488 "DAO.c"
 	stmt = NULL;
 #line 125 "DAO.vala"
 	res = (_tmp1_ = sqlite3_prepare_v2 (self->priv->_db, qry, -1, &_tmp0_, NULL), stmt = (_tmp2_ = _tmp0_, _sqlite3_finalize0 (stmt), _tmp2_), _tmp1_);
 #line 126 "DAO.vala"
 	if (res != SQLITE_OK) {
-#line 509 "DAO.c"
+#line 494 "DAO.c"
 		char* _tmp3_;
 		GError* _tmp4_;
 		_inner_error_ = (_tmp4_ = g_error_new_literal (GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL, _tmp3_ = g_strconcat ("preparing statement: ", sqlite3_errmsg (self->priv->_db), NULL)), _g_free0 (_tmp3_), _tmp4_);
@@ -533,11 +518,11 @@ static GeeList* gnomecook_dao_meal_dao_real_get_all (gnomecookDAODAOInterface* b
 		_tmp5_ = TRUE;
 #line 129 "DAO.vala"
 		while (TRUE) {
-#line 536 "DAO.c"
+#line 521 "DAO.c"
 			gnomecookDomainMeal* m;
 #line 129 "DAO.vala"
 			if (!_tmp5_) {
-#line 540 "DAO.c"
+#line 525 "DAO.c"
 			}
 #line 129 "DAO.vala"
 			_tmp5_ = FALSE;
@@ -547,11 +532,11 @@ static GeeList* gnomecook_dao_meal_dao_real_get_all (gnomecookDAODAOInterface* b
 			if (res == SQLITE_DONE) {
 #line 132 "DAO.vala"
 				break;
-#line 550 "DAO.c"
+#line 535 "DAO.c"
 			} else {
 #line 133 "DAO.vala"
 				if (res != SQLITE_ROW) {
-#line 554 "DAO.c"
+#line 539 "DAO.c"
 					char* _tmp6_;
 					GError* _tmp7_;
 					_inner_error_ = (_tmp7_ = g_error_new_literal (GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL, _tmp6_ = g_strconcat ("error fetching row:", sqlite3_errmsg (self->priv->_db), NULL)), _g_free0 (_tmp6_), _tmp7_);
@@ -589,7 +574,7 @@ static GeeList* gnomecook_dao_meal_dao_real_get_all (gnomecookDAODAOInterface* b
 			gnomecook_domain_meal_set_ingredients (m, sqlite3_column_text (stmt, 5));
 #line 145 "DAO.vala"
 			gee_collection_add ((GeeCollection*) meals, m);
-#line 592 "DAO.c"
+#line 577 "DAO.c"
 			_g_object_unref0 (m);
 		}
 	}
@@ -598,13 +583,13 @@ static GeeList* gnomecook_dao_meal_dao_real_get_all (gnomecookDAODAOInterface* b
 	_g_free0 (qry);
 #line 148 "DAO.vala"
 	return result;
-#line 601 "DAO.c"
+#line 586 "DAO.c"
 }
 
 
 #line 151 "DAO.vala"
 static void gnomecook_dao_meal_dao_real_add (gnomecookDAODAOInterface* base, gnomecookDomainMeal* m, GError** error) {
-#line 607 "DAO.c"
+#line 592 "DAO.c"
 	gnomecookDAOMealDAO * self;
 	char* qry;
 	sqlite3_stmt* stmt;
@@ -618,13 +603,13 @@ static void gnomecook_dao_meal_dao_real_add (gnomecookDAODAOInterface* base, gno
 	g_return_if_fail (m != NULL);
 #line 153 "DAO.vala"
 	qry = g_strdup ("INSERT INTO meals " "(name, " "cooking_time, " "instructions, " "rating, " "ingredients) VALUES(?,?,?,?,?)");
-#line 621 "DAO.c"
+#line 606 "DAO.c"
 	stmt = NULL;
 #line 162 "DAO.vala"
 	res = (_tmp1_ = sqlite3_prepare_v2 (self->priv->_db, qry, -1, &_tmp0_, NULL), stmt = (_tmp2_ = _tmp0_, _sqlite3_finalize0 (stmt), _tmp2_), _tmp1_);
 #line 164 "DAO.vala"
 	if (res != SQLITE_OK) {
-#line 627 "DAO.c"
+#line 612 "DAO.c"
 		_inner_error_ = g_error_new_literal (GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL, sqlite3_errmsg (self->priv->_db));
 		{
 			if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
@@ -665,7 +650,7 @@ static void gnomecook_dao_meal_dao_real_add (gnomecookDAODAOInterface* base, gno
 	res = sqlite3_step (stmt);
 #line 180 "DAO.vala"
 	if (res != SQLITE_DONE) {
-#line 668 "DAO.c"
+#line 653 "DAO.c"
 		_inner_error_ = g_error_new_literal (GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL, sqlite3_errmsg (self->priv->_db));
 		{
 			if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
@@ -689,7 +674,7 @@ static void gnomecook_dao_meal_dao_real_add (gnomecookDAODAOInterface* base, gno
 
 #line 185 "DAO.vala"
 static void gnomecook_dao_meal_dao_real_update (gnomecookDAODAOInterface* base, gnomecookDomainMeal* m, GError** error) {
-#line 692 "DAO.c"
+#line 677 "DAO.c"
 	gnomecookDAOMealDAO * self;
 	char* qry;
 	sqlite3_stmt* stmt;
@@ -703,13 +688,13 @@ static void gnomecook_dao_meal_dao_real_update (gnomecookDAODAOInterface* base, 
 	g_return_if_fail (m != NULL);
 #line 187 "DAO.vala"
 	qry = g_strdup ("UPDATE meals SET " "name = ?, " "cooking_time = ?, " "instructions = ?, " "rating = ?, " "ingredients = ? " "where id = ? ;");
-#line 706 "DAO.c"
+#line 691 "DAO.c"
 	stmt = NULL;
 #line 197 "DAO.vala"
 	res = (_tmp1_ = sqlite3_prepare_v2 (self->priv->_db, qry, -1, &_tmp0_, NULL), stmt = (_tmp2_ = _tmp0_, _sqlite3_finalize0 (stmt), _tmp2_), _tmp1_);
 #line 199 "DAO.vala"
 	if (res != SQLITE_OK) {
-#line 712 "DAO.c"
+#line 697 "DAO.c"
 		_inner_error_ = g_error_new_literal (GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL, sqlite3_errmsg (self->priv->_db));
 		{
 			if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
@@ -742,7 +727,7 @@ static void gnomecook_dao_meal_dao_real_update (gnomecookDAODAOInterface* base, 
 	res = sqlite3_step (stmt);
 #line 211 "DAO.vala"
 	if (res != SQLITE_DONE) {
-#line 745 "DAO.c"
+#line 730 "DAO.c"
 		_inner_error_ = g_error_new_literal (GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL, sqlite3_errmsg (self->priv->_db));
 		{
 			if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
@@ -766,7 +751,7 @@ static void gnomecook_dao_meal_dao_real_update (gnomecookDAODAOInterface* base, 
 
 #line 215 "DAO.vala"
 static void gnomecook_dao_meal_dao_real_del (gnomecookDAODAOInterface* base, gnomecookDomainMeal* m, GError** error) {
-#line 769 "DAO.c"
+#line 754 "DAO.c"
 	gnomecookDAOMealDAO * self;
 	char* qry;
 	sqlite3_stmt* stmt;
@@ -780,13 +765,13 @@ static void gnomecook_dao_meal_dao_real_del (gnomecookDAODAOInterface* base, gno
 	g_return_if_fail (m != NULL);
 #line 217 "DAO.vala"
 	qry = g_strdup ("DELETE FROM meals WHERE id = ?;");
-#line 783 "DAO.c"
+#line 768 "DAO.c"
 	stmt = NULL;
 #line 221 "DAO.vala"
 	res = (_tmp1_ = sqlite3_prepare_v2 (self->priv->_db, qry, -1, &_tmp0_, NULL), stmt = (_tmp2_ = _tmp0_, _sqlite3_finalize0 (stmt), _tmp2_), _tmp1_);
 #line 223 "DAO.vala"
 	if (res != SQLITE_OK) {
-#line 789 "DAO.c"
+#line 774 "DAO.c"
 		_inner_error_ = g_error_new_literal (GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL, sqlite3_errmsg (self->priv->_db));
 		{
 			if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
@@ -811,7 +796,7 @@ static void gnomecook_dao_meal_dao_real_del (gnomecookDAODAOInterface* base, gno
 	res = sqlite3_step (stmt);
 #line 231 "DAO.vala"
 	if (res != SQLITE_DONE) {
-#line 814 "DAO.c"
+#line 799 "DAO.c"
 		_inner_error_ = g_error_new_literal (GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL, sqlite3_errmsg (self->priv->_db));
 		{
 			if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {

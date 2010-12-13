@@ -37,12 +37,6 @@ namespace gnomecook.ui {
     private ListStore recipe_store = null;
     private TreeViewColumn name_column = null;
     private CellRendererText name_renderer = null;
-    
-    // ingredient view objects
-    private TextView ingredients_view = null;
-    
-    // recipe view objects
-    private TextView recipe_view = null;
    
     // Model
     Model model = null;
@@ -329,7 +323,7 @@ namespace gnomecook.ui {
       rec_view.set_buffer(rec_text);
 	  }
 	  
-	  public void show_error_dialog(string text) {
+	  private void show_error_dialog(string text) {
 	    GLib.debug("an error was thrown: %s", text);
 	    MessageDialog dialog = new MessageDialog(window, DialogFlags.MODAL, MessageType.ERROR, ButtonsType.CANCEL, null);
 	    dialog.text = text;

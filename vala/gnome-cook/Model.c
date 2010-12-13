@@ -144,15 +144,15 @@ gnomecookmodelModel* gnomecook_model_model_construct (GType object_type) {
 #line 145 "Model.c"
 		if (_inner_error_ != NULL) {
 			if (g_error_matches (_inner_error_, GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_OPEN)) {
-				goto __catch0_gnomecook_dao_dao_error_e_open;
+				goto __catch3_gnomecook_dao_dao_error_e_open;
 			}
 			if (g_error_matches (_inner_error_, GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL)) {
-				goto __catch0_gnomecook_dao_dao_error_e_sql;
+				goto __catch3_gnomecook_dao_dao_error_e_sql;
 			}
 			if (g_error_matches (_inner_error_, GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_TYPE)) {
-				goto __catch0_gnomecook_dao_dao_error_e_type;
+				goto __catch3_gnomecook_dao_dao_error_e_type;
 			}
-			goto __catch0_g_error;
+			goto __catch3_g_error;
 		}
 #line 38 "Model.vala"
 		self->priv->dao = (_tmp1_ = _tmp0_, _g_object_unref0 (self->priv->dao), _tmp1_);
@@ -161,22 +161,22 @@ gnomecookmodelModel* gnomecook_model_model_construct (GType object_type) {
 #line 162 "Model.c"
 		if (_inner_error_ != NULL) {
 			if (g_error_matches (_inner_error_, GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_OPEN)) {
-				goto __catch0_gnomecook_dao_dao_error_e_open;
+				goto __catch3_gnomecook_dao_dao_error_e_open;
 			}
 			if (g_error_matches (_inner_error_, GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_SQL)) {
-				goto __catch0_gnomecook_dao_dao_error_e_sql;
+				goto __catch3_gnomecook_dao_dao_error_e_sql;
 			}
 			if (g_error_matches (_inner_error_, GNOMECOOK_DAO_DAO_ERROR, GNOMECOOK_DAO_DAO_ERROR_E_TYPE)) {
-				goto __catch0_gnomecook_dao_dao_error_e_type;
+				goto __catch3_gnomecook_dao_dao_error_e_type;
 			}
-			goto __catch0_g_error;
+			goto __catch3_g_error;
 		}
 #line 39 "Model.vala"
 		self->priv->models = (_tmp3_ = _tmp2_, _g_object_unref0 (self->priv->models), _tmp3_);
 #line 177 "Model.c"
 	}
-	goto __finally0;
-	__catch0_gnomecook_dao_dao_error_e_open:
+	goto __finally3;
+	__catch3_gnomecook_dao_dao_error_e_open:
 	{
 		GError * e;
 		e = _inner_error_;
@@ -190,8 +190,8 @@ gnomecookmodelModel* gnomecook_model_model_construct (GType object_type) {
 			_g_error_free0 (e);
 		}
 	}
-	goto __finally0;
-	__catch0_gnomecook_dao_dao_error_e_sql:
+	goto __finally3;
+	__catch3_gnomecook_dao_dao_error_e_sql:
 	{
 		GError * e;
 		e = _inner_error_;
@@ -205,8 +205,8 @@ gnomecookmodelModel* gnomecook_model_model_construct (GType object_type) {
 			_g_error_free0 (e);
 		}
 	}
-	goto __finally0;
-	__catch0_gnomecook_dao_dao_error_e_type:
+	goto __finally3;
+	__catch3_gnomecook_dao_dao_error_e_type:
 	{
 		GError * e;
 		e = _inner_error_;
@@ -220,8 +220,8 @@ gnomecookmodelModel* gnomecook_model_model_construct (GType object_type) {
 			_g_error_free0 (e);
 		}
 	}
-	goto __finally0;
-	__catch0_g_error:
+	goto __finally3;
+	__catch3_g_error:
 	{
 		GError * e;
 		e = _inner_error_;
@@ -233,7 +233,7 @@ gnomecookmodelModel* gnomecook_model_model_construct (GType object_type) {
 			_g_error_free0 (e);
 		}
 	}
-	__finally0:
+	__finally3:
 	if (_inner_error_ != NULL) {
 		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 		g_clear_error (&_inner_error_);
@@ -268,7 +268,7 @@ void gnomecook_model_model_add (gnomecookmodelModel* self, gnomecookDomainMeal* 
 #line 269 "Model.c"
 			if (_inner_error_ != NULL) {
 				if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
-					goto __catch1_gnomecook_dao_dao_error;
+					goto __catch4_gnomecook_dao_dao_error;
 				}
 				g_critical ("file %s: line %d: unexpected error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 				g_clear_error (&_inner_error_);
@@ -279,8 +279,8 @@ void gnomecook_model_model_add (gnomecookmodelModel* self, gnomecookDomainMeal* 
 #line 280 "Model.c"
 		}
 	}
-	goto __finally1;
-	__catch1_gnomecook_dao_dao_error:
+	goto __finally4;
+	__catch4_gnomecook_dao_dao_error:
 	{
 		GError * e;
 		e = _inner_error_;
@@ -292,7 +292,7 @@ void gnomecook_model_model_add (gnomecookmodelModel* self, gnomecookDomainMeal* 
 			_g_error_free0 (e);
 		}
 	}
-	__finally1:
+	__finally4:
 	if (_inner_error_ != NULL) {
 		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 		g_clear_error (&_inner_error_);
@@ -319,7 +319,7 @@ void gnomecook_model_model_update (gnomecookmodelModel* self, gnomecookDomainMea
 #line 320 "Model.c"
 			if (_inner_error_ != NULL) {
 				if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
-					goto __catch2_gnomecook_dao_dao_error;
+					goto __catch5_gnomecook_dao_dao_error;
 				}
 				g_critical ("file %s: line %d: unexpected error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 				g_clear_error (&_inner_error_);
@@ -330,8 +330,8 @@ void gnomecook_model_model_update (gnomecookmodelModel* self, gnomecookDomainMea
 		self->priv->models = (_tmp0_ = gnomecook_model_model_get_all (self), _g_object_unref0 (self->priv->models), _tmp0_);
 #line 332 "Model.c"
 	}
-	goto __finally2;
-	__catch2_gnomecook_dao_dao_error:
+	goto __finally5;
+	__catch5_gnomecook_dao_dao_error:
 	{
 		GError * e;
 		e = _inner_error_;
@@ -343,7 +343,7 @@ void gnomecook_model_model_update (gnomecookmodelModel* self, gnomecookDomainMea
 			_g_error_free0 (e);
 		}
 	}
-	__finally2:
+	__finally5:
 	if (_inner_error_ != NULL) {
 		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 		g_clear_error (&_inner_error_);
@@ -371,7 +371,7 @@ void gnomecook_model_model_del (gnomecookmodelModel* self, gnomecookDomainMeal* 
 #line 372 "Model.c"
 			if (_inner_error_ != NULL) {
 				if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
-					goto __catch3_gnomecook_dao_dao_error;
+					goto __catch6_gnomecook_dao_dao_error;
 				}
 				g_critical ("file %s: line %d: unexpected error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 				g_clear_error (&_inner_error_);
@@ -382,8 +382,8 @@ void gnomecook_model_model_del (gnomecookmodelModel* self, gnomecookDomainMeal* 
 #line 383 "Model.c"
 		}
 	}
-	goto __finally3;
-	__catch3_gnomecook_dao_dao_error:
+	goto __finally6;
+	__catch6_gnomecook_dao_dao_error:
 	{
 		GError * e;
 		e = _inner_error_;
@@ -395,7 +395,7 @@ void gnomecook_model_model_del (gnomecookmodelModel* self, gnomecookDomainMeal* 
 			_g_error_free0 (e);
 		}
 	}
-	__finally3:
+	__finally6:
 	if (_inner_error_ != NULL) {
 		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 		g_clear_error (&_inner_error_);
@@ -413,71 +413,96 @@ static gpointer _g_object_ref0 (gpointer self) {
 GeeList* gnomecook_model_model_get_all (gnomecookmodelModel* self) {
 #line 415 "Model.c"
 	GeeList* result = NULL;
-	GeeList* _tmp0_;
-	GeeList* _tmp1_;
 	GError * _inner_error_ = NULL;
 #line 92 "Model.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 93 "Model.vala"
-	_tmp0_ = gnomecook_dao_dao_interface_get_all ((gnomecookDAODAOInterface*) self->priv->dao, &_inner_error_);
-#line 424 "Model.c"
+#line 420 "Model.c"
+	{
+		GeeList* _tmp0_;
+		GeeList* _tmp1_;
+#line 94 "Model.vala"
+		_tmp0_ = gnomecook_dao_dao_interface_get_all ((gnomecookDAODAOInterface*) self->priv->dao, &_inner_error_);
+#line 426 "Model.c"
+		if (_inner_error_ != NULL) {
+			if (_inner_error_->domain == GNOMECOOK_DAO_DAO_ERROR) {
+				goto __catch7_gnomecook_dao_dao_error;
+			}
+			g_critical ("file %s: line %d: unexpected error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
+			g_clear_error (&_inner_error_);
+			return NULL;
+		}
+#line 94 "Model.vala"
+		self->priv->models = (_tmp1_ = _tmp0_, _g_object_unref0 (self->priv->models), _tmp1_);
+#line 437 "Model.c"
+	}
+	goto __finally7;
+	__catch7_gnomecook_dao_dao_error:
+	{
+		GError * e;
+		e = _inner_error_;
+		_inner_error_ = NULL;
+		{
+#line 96 "Model.vala"
+			g_debug ("Model.vala:96: failed to read models: %s", e->message);
+#line 448 "Model.c"
+			_g_error_free0 (e);
+		}
+	}
+	__finally7:
 	if (_inner_error_ != NULL) {
 		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
 		g_clear_error (&_inner_error_);
 		return NULL;
 	}
-#line 93 "Model.vala"
-	self->priv->models = (_tmp1_ = _tmp0_, _g_object_unref0 (self->priv->models), _tmp1_);
-#line 432 "Model.c"
 	result = _g_object_ref0 (self->priv->models);
-#line 94 "Model.vala"
+#line 98 "Model.vala"
 	return result;
-#line 436 "Model.c"
+#line 461 "Model.c"
 }
 
 
-#line 97 "Model.vala"
+#line 101 "Model.vala"
 gnomecookDomainMeal* gnomecook_model_model_get_one (gnomecookmodelModel* self, gint64 id) {
-#line 442 "Model.c"
+#line 467 "Model.c"
 	gnomecookDomainMeal* result = NULL;
 	gnomecookDomainMeal* val;
-#line 97 "Model.vala"
+#line 101 "Model.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 99 "Model.vala"
+#line 103 "Model.vala"
 	val = NULL;
-#line 449 "Model.c"
+#line 474 "Model.c"
 	{
 		GeeIterator* _m_it;
-#line 101 "Model.vala"
+#line 105 "Model.vala"
 		_m_it = gee_iterable_iterator ((GeeIterable*) self->priv->models);
-#line 101 "Model.vala"
+#line 105 "Model.vala"
 		while (TRUE) {
-#line 456 "Model.c"
+#line 481 "Model.c"
 			gnomecookDomainMeal* m;
-#line 101 "Model.vala"
+#line 105 "Model.vala"
 			if (!gee_iterator_next (_m_it)) {
-#line 101 "Model.vala"
+#line 105 "Model.vala"
 				break;
-#line 462 "Model.c"
+#line 487 "Model.c"
 			}
-#line 101 "Model.vala"
+#line 105 "Model.vala"
 			m = (gnomecookDomainMeal*) gee_iterator_get (_m_it);
-#line 102 "Model.vala"
+#line 106 "Model.vala"
 			if (gnomecook_domain_meal_get_id (m) == id) {
-#line 468 "Model.c"
+#line 493 "Model.c"
 				gnomecookDomainMeal* _tmp0_;
-#line 103 "Model.vala"
+#line 107 "Model.vala"
 				val = (_tmp0_ = _g_object_ref0 (m), _g_object_unref0 (val), _tmp0_);
-#line 472 "Model.c"
+#line 497 "Model.c"
 			}
 			_g_object_unref0 (m);
 		}
 		_g_object_unref0 (_m_it);
 	}
 	result = val;
-#line 106 "Model.vala"
+#line 110 "Model.vala"
 	return result;
-#line 481 "Model.c"
+#line 506 "Model.c"
 }
 
 

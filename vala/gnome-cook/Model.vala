@@ -90,7 +90,11 @@ namespace gnomecook.model {
     }
     
     public Gee.List<Meal> get_all() {
-      models = dao.get_all();
+      try {
+        models = dao.get_all();
+      } catch (DAOError e) {
+        GLib.debug("failed to read models: %s", e.message);
+      }
       return models;
     }
     

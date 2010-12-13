@@ -1,0 +1,18 @@
+###############################################################################
+								Json2properties
+###############################################################################
+
+
+This project holds a class that overloads the << and >> operators in groovy so
+they behave like the stream operators << and >> in C++, but for JSONObject and
+Java Properties objects. Properties are the preferred way to store application
+properties. They can be serialized to key/value files or XML files.
+
+Using properties << json, the user can transform a json stream into a 
+Properties object, and using properties >> json, the other way around.
+
+Import the project into eclipse and run JsonStreamCategoryTests class as a 
+JUnit test case.
+
+The JSONObject class is a class from the official JSON library for Java, which 
+is included in the project as a library under the org.json package.
